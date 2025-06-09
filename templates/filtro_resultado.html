@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Filtrado por Género{% endblock %}
+
+{% block content %}
+<style>
+  .borde-morado-animado {
+    background-color: #111;
+    border: 4px solid #cc99ff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #cc99ff, 0 0 20px #cc99ff;
+    animation: brillo-morado 2s infinite alternate;
+  }
+
+  @keyframes brillo-morado {
+    from { box-shadow: 0 0 6px #cc99ff; }
+    to   { box-shadow: 0 0 20px #cc99ff; }
+  }
+
+  table.nes-table {
+    background-color: #111;
+    color: white;
+  }
+
+  .nes-table.is-bordered th,
+  .nes-table.is-bordered td {
+    border: 2px solid #cc99ff;
+    background-color: #111;
+    color: white;
+    box-shadow: 0 0 5px #cc99ff;
+  }
+
+  .nes-table thead {
+    background-color: #cc99ff;
+    color: black;
+  }
+
+  .btn-volver-morado {
+    background-color: #cc99ff !important;
+    color: black !important;
+    box-shadow: 0 0 8px #cc99ff, 0 0 16px #cc99ff;
+    animation: brillo-volver 1.5s infinite alternate;
+    margin-top: 2rem;
+  }
+
+  @keyframes brillo-volver {
+    from { box-shadow: 0 0 4px #cc99ff; }
+    to   { box-shadow: 0 0 14px #cc99ff; }
+  }
+</style>
+
+<section class="nes-container with-title borde-morado-animado mt-4" style="position: relative;">
+  <h2 class="title" style="color: black; background-color: white; padding: 4px; border-radius: 8px;">
+    🎯 Resultados para género: {{ genero }}
+  </h2>
+
+  {% if libros %}
+  <table class="nes-table is-bordered is-centered mt-4">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Año</th>
+        <th>Plataforma</th>
+        <th>Viral</th>
+        <th>Portada</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for libro in libros %}
+      <tr>
+        <td>{{ libro.id }}</td>
+        <td>{{ libro.titulo }}</td>
+        <td>{{ libro.autor_nombre }}</td>
+        <td>{{ libro.anio_publicacion }}</td>
+        <td>{{ libro.plataforma }}</td>
+        <td>{{ 'Sí' if libro.viral_en_tiktok else 'No' }}</td>
+        <td>
+          {% if libro.portada %}
+            <img src="/static/portadas/{{ libro.portada }}" alt="Portada" width="48" style="border-radius: 6px;">
+          {% else %}
+            Sin portada
+          {% endif %}
+        </td>
+        <td>
+          <a href="/libros/{{ libro.id }}" class="nes-btn is-success is-small">🔍</a>
+          <a href="/libros/editar/{{ libro.id }}" class="nes-btn is-warning is-small">✏️</a>
+          <a href="/libros/eliminar/{{ libro.id }}" class="nes-btn is-error is-small">🗑</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p class="nes-text is-warning mt-4">No se encontraron libros para ese género.</p>
+  {% endif %}
+
+  <div class="mt-4">
+    <a href="/libros/buscar" class="nes-btn btn-volver-morado">🔙 Volver al buscador</a>
+  </div>
+</section>
+{% endblock %}
