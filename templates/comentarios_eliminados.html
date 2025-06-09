@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Comentarios Eliminados{% endblock %}
+
+{% block content %}
+<section class="nes-container with-title borde-rojo-animado mt-4" style="color: white; position: relative;">
+  <h2 class="title flex items-center gap-2" style="color: black; background-color: white; padding: 4px; border-radius: 8px;">
+    <img src="/static/icons/pokeball.png" alt="Pokebola" style="width: 32px;" class="icono-flotante brillo-rojo">
+    🗑 Comentarios Eliminados
+  </h2>
+
+  {% if comentarios %}
+  <table class="nes-table is-bordered is-centered mt-4" style="background-color: white; color: black;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Libro ID</th>
+        <th>Usuario</th>
+        <th>Comentario</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for comentario in comentarios %}
+      <tr>
+        <td>{{ comentario.id }}</td>
+        <td>{{ comentario.libro_id }}</td>
+        <td>{{ comentario.usuario }}</td>
+        <td>{{ comentario.contenido }}</td>
+        <td>{{ comentario.fecha }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="nes-text is-primary mt-4">No hay comentarios eliminados.</p>
+  {% endif %}
+
+  <!-- Botón volver -->
+  <div class="mt-4">
+    <a href="/comentarios" class="nes-btn is-primary btn-rojo-animado">🔙 Volver</a>
+  </div>
+
+  <!-- Iconos en las esquinas -->
+  <img src="/static/icons/kirby.png" alt="Kirby" class="icono-flotante brillo-rojo" style="width: 64px; position: absolute; bottom: 16px; left: 16px;">
+  <img src="/static/icons/pokeball.png" alt="Pokebola" class="icono-flotante brillo-rojo" style="width: 64px; position: absolute; bottom: 16px; right: 16px;">
+</section>
+{% endblock %}
