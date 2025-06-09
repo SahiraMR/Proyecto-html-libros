@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Planeación del Proyecto{% endblock %}
+
+{% block content %}
+<style>
+  .borde-amarillo-total {
+    border: 4px solid #f7e000;
+    box-shadow: 0 0 10px #f7e000;
+    animation: bordeBrillanteAmarillo 1.5s infinite alternate;
+  }
+
+  @keyframes bordeBrillanteAmarillo {
+    0% { box-shadow: 0 0 5px #f7e000; }
+    100% { box-shadow: 0 0 15px #f7e000; }
+  }
+
+  .btn-amarillo-animado {
+    background-color: #f7e000;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+    animation: parpadeoAmarillo 1.5s infinite;
+  }
+
+  @keyframes parpadeoAmarillo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .icono-flotante {
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+</style>
+
+<section class="nes-container is-dark with-title borde-amarillo-total mt-4" style="position: relative; color: white;">
+  <h2 class="title" style="color: black; background-color: white; padding: 6px; border-radius: 8px; display: flex; align-items: center; gap: 12px;">
+    🗂️ Fase de Planeación
+    <img src="/static/icons/kirby.png" alt="Kirby" class="icono-flotante" style="width: 48px;">
+  </h2>
+
+  <p>
+    En esta sección se presentan los elementos clave de la fase de planeación del proyecto, incluyendo los <strong>casos de uso</strong>, el <strong>modelo de datos</strong> y las <strong>fuentes de información</strong> utilizadas para diseñar el sistema.
+  </p>
+
+  <div class="mt-4">
+    <a href="/" class="nes-btn btn-amarillo-animado">🔙 Volver al inicio</a>
+  </div>
+</section>
+{% endblock %}
