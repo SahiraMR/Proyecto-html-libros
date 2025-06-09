@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Comentarios{% endblock %}
+
+{% block content %}
+<section class="nes-container with-title borde-rojo-animado mt-4" style="color: white; position: relative;">
+  <h2 class="title flex items-center gap-2" style="color: black; background-color: white; padding: 6px; border-radius: 8px;">
+    <img src="/static/icons/kirby.png" alt="Kirby" style="width: 32px;" class="icono-flotante brillo-rojo">
+    💬 Comentarios Registrados
+  </h2>
+
+  <div class="mb-4 mt-2">
+    <a href="/comentarios/crear" class="nes-btn is-success btn-rojo-animado" style="color: black;">➕ Nuevo Comentario</a>
+  </div>
+
+  <table class="nes-table is-bordered is-centered mt-4" style="background-color: white; color: black;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Libro ID</th>
+        <th>Usuario</th>
+        <th>Comentario</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for comentario in comentarios %}
+      <tr>
+        <td>{{ comentario.id }}</td>
+        <td>{{ comentario.libro_id }}</td>
+        <td>{{ comentario.usuario }}</td>
+        <td>{{ comentario.contenido }}</td>
+        <td>{{ comentario.fecha }}</td>
+        <td>
+          <a href="/comentarios/editar/{{ comentario.id }}" class="nes-btn is-warning btn-rojo-animado" style="color: black;">✏️</a>
+          <a href="/comentarios/eliminar/{{ comentario.id }}" class="nes-btn is-error btn-rojo-animado" style="color: black;">🗑</a>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="6">No hay comentarios registrados.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Íconos flotantes en las esquinas inferiores -->
+  <img src="/static/icons/kirby.png" alt="Kirby" class="icono-flotante brillo-rojo" style="width: 64px; position: absolute; bottom: 16px; left: 16px;">
+  <img src="/static/icons/pokeball.png" alt="Pokebola" class="icono-flotante brillo-rojo" style="width: 64px; position: absolute; bottom: 16px; right: 16px;">
+</section>
+{% endblock %}
