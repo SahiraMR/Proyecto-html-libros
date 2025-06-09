@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Nuevo Comentario{% endblock %}
+
+{% block content %}
+<section class="nes-container with-title borde-rojo-animado mt-4" style="color: white;">
+  <h2 class="title flex items-center gap-2" style="color: black; background-color: white; padding: 4px; border-radius: 8px;">
+    <img src="/static/icons/kirby.png" alt="Kirby" style="width: 32px;" class="icono-flotante brillo-rojo">
+    💬 Crear Nuevo Comentario
+  </h2>
+
+  <form method="post" class="mt-4">
+    <!-- Libro -->
+    <div class="nes-field mb-4">
+      <label for="libro_id" style="color: white;">📚 Libro</label>
+      <div class="nes-select">
+        <select id="libro_id" name="libro_id" required>
+          <option value="" disabled selected>Selecciona un libro</option>
+          {% for libro in libros %}
+            <option value="{{ libro.id }}">{{ libro.titulo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <!-- Usuario -->
+    <div class="nes-field mb-4">
+      <label for="usuario" style="color: white;">👤 Usuario</label>
+      <input type="text" id="usuario" name="usuario" class="nes-input is-success" placeholder="Tu nombre o alias" required>
+    </div>
+
+    <!-- Comentario -->
+    <div class="nes-field mb-4">
+      <label for="contenido" style="color: white;">📝 Comentario</label>
+      <textarea id="contenido" name="contenido" class="nes-textarea is-dark" rows="4" placeholder="Escribe tu opinión..." required></textarea>
+    </div>
+
+    <!-- Fecha -->
+    <div class="nes-field mb-4">
+      <label for="fecha" style="color: white;">📅 Fecha</label>
+      <input type="date" id="fecha" name="fecha" class="nes-input is-warning" required>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex mt-4" style="gap: 1rem;">
+      <button type="submit" class="nes-btn is-primary btn-rojo-animado">✅ Guardar</button>
+      <a href="/comentarios" class="nes-btn is-error btn-rojo-animado">❌ Cancelar</a>
+    </div>
+  </form>
+
+  <!-- Íconos flotantes abajo usando kirby y pokeball -->
+  <div class="mt-5 flex justify-center" style="gap: 2rem; align-items: center;">
+    <div style="text-align: center;">
+      <img src="/static/icons/kirby.png" alt="Kirby" class="icono-flotante brillo-rojo" style="width: 64px;">
+      <div style="color: #ff9999;">Kirby</div>
+    </div>
+    <div style="text-align: center;">
+      <img src="/static/icons/pokeball.png" alt="Pokeball" class="icono-flotante brillo-rojo" style="width: 64px;">
+      <div style="color: #ff9999;">Pokebola</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
