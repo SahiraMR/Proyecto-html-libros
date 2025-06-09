@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Editar Libro{% endblock %}
+
+{% block content %}
+<section class="nes-container with-title is-dark mt-4">
+  <h2 class="title">✏️ Editar Libro</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    <div class="nes-field">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" name="titulo" class="nes-input" value="{{ libro.titulo }}" required>
+    </div><br>
+
+    <div class="nes-field">
+      <label for="autor_id">Autor</label>
+      <div class="nes-select">
+        <select name="autor_id" id="autor_id" required>
+          {% for autor in autores %}
+            <option value="{{ autor.id }}" {% if autor.id == libro.autor_id %}selected{% endif %}>
+              {{ autor.nombre }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div><br>
+
+    <div class="nes-field">
+      <label for="genero">Género</label>
+      <input type="text" id="genero" name="genero" class="nes-input" value="{{ libro.genero }}" required>
+    </div><br>
+
+    <div class="nes-field">
+      <label for="anio_publicacion">Año de Publicación</label>
+      <input type="number" id="anio_publicacion" name="anio_publicacion" class="nes-input" value="{{ libro.anio_publicacion }}" required>
+    </div><br>
+
+    <div class="nes-field">
+      <label for="plataforma">Plataforma</label>
+      <div class="nes-select">
+        <select id="plataforma" name="plataforma" required>
+          <option value="Wattpad" {% if libro.plataforma =="Wattpad" %}selected{% endif %}>Wattpad</option>
+          <option value="Booknet" {% if libro.plataforma =="Booknet" %}selected{% endif %}>Booknet</option>
+        </select>
+      </div>
+    </div><br>
+
+    <div class="nes-field">
+      <label for="viral_en_tiktok">¿Viral en TikTok?</label>
+      <div class="nes-select">
+        <select id="viral_en_tiktok" name="viral_en_tiktok" required>
+          <option value="True" {% if libro.viral_en_tiktok %}selected{% endif %}>Sí</option>
+          <option value="False" {% if not libro.viral_en_tiktok %}selected{% endif %}>No</option>
+        </select>
+      </div>
+    </div><br>
+
+    <div class="nes-field">
+      <label for="portada">Portada (opcional)</label>
+      <input type="file" id="portada" name="portada" class="nes-input">
+      {% if libro.portada %}
+        <p>Actual:</p>
+        <img src="/static/portadas/{{ libro.portada }}" alt="Portada actual" width="120">
+      {% endif %}
+    </div><br>
+
+    {% if comentario %}
+      <div class="nes-field">
+        <label for="contenido_comentario">Comentario</label>
+        <textarea id="contenido_comentario" name="contenido_comentario" class="nes-textarea" rows="4" required>{{ comentario.contenido }}</textarea>
+      </div><br>
+
+      <div class="nes-field">
+        <label for="usuario_comentario">Usuario del Comentario</label>
+        <input type="text" id="usuario_comentario" name="usuario_comentario" class="nes-input" value="{{ comentario.usuario }}" required>
+      </div><br>
+    {% endif %}
+
+    <button type="submit" class="nes-btn is-success">💾 Guardar Cambios</button>
+  </form>
+</section>
+{% endblock %}
