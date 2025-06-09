@@ -1,0 +1,39 @@
+id,libro_id,usuario,contenido,fecha
+1,1,Camila,"Una lectura interesante, aunque esperaba más.",2024-08-23
+2,2,Lucia,"Muy diferente a lo que suelo leer, y me gustó.",2024-12-25
+3,3,Alejandro,Siento que faltó algo más en el desenlace.,2024-11-30
+4,4,Daniel,Excelente desarrollo de personajes.,2024-08-28
+5,5,Valentina,Me atrapó desde el primer capítulo.,2024-09-15
+6,6,Santiago,La trama es fuerte pero bien narrada.,2024-10-05
+7,7,Laura,Un poco predecible pero muy entretenido.,2024-08-10
+8,8,Andrés,"No lo pude soltar, lo leí en un día.",2024-07-29
+9,9,Isabela,El final me rompió el corazón.,2024-11-11
+10,10,Felipe,"Muy bien escrito, pero con algunas partes lentas.",2024-06-20
+11,11,Juliana,Lo recomendaría a cualquier romántico empedernido.,2024-07-01
+12,12,Esteban,Tiene una vibra muy especial y nostálgica.,2024-10-30
+13,13,Daniela,"Reí, lloré y me enamoré con cada página.",2024-12-02
+14,14,Samuel,Me costó conectar con los personajes.,2024-09-22
+15,15,Paula,Una historia que te deja pensando.,2024-11-17
+16,16,Valeria,Perfecta para leer en una tarde de lluvia.,2024-08-19
+17,17,David,Interesante aunque algo confusa al inicio.,2024-07-26
+18,18,Sara,¡Me encantó la portada!,2024-10-12
+19,19,Jorge,Una novela con giros que no esperaba.,2024-09-09
+20,20,Natalia,Ideal para fans del romance oscuro.,2024-06-14
+21,21,Mateo,"Tiene escenas muy intensas, pero bien manejadas.",2024-12-05
+22,22,Mariana,"Pensé que sería cliché, pero sorprendió.",2024-10-08
+23,23,Juan,Me gustó mucho más de lo que pensaba.,2024-07-03
+24,24,Luisa,Hay frases que me marcaron.,2024-09-12
+25,25,Nicolás,Leí la trilogía entera en una semana.,2024-11-03
+26,26,Melissa,Una experiencia lectora diferente.,2024-06-28
+27,27,Tomas,La evolución de los personajes fue brutal.,2024-08-07
+28,28,Clara,Algunos capítulos me resultaron densos.,2024-12-21
+29,29,Emilio,"Romántico, divertido y conmovedor.",2024-07-30
+30,30,Daniela,Me recordó a mi primera historia de amor.,2024-09-01
+31,31,Benjamin,"Parece una película, visual y emotiva.",2024-10-17
+32,32,Alejandra,El desarrollo fue lento pero vale la pena.,2024-11-28
+33,33,Martín,Una historia ligera y entretenida.,2024-08-12
+34,34,Catalina,Me encantaron los giros argumentales.,2024-06-11
+35,35,Marcos,El cierre no fue lo que esperaba.,2024-07-09
+36,36,Adriana,Excelente propuesta dentro del drama legal.,2024-09-27
+37,37,Florencia,Una secuela que mantiene el nivel.,2024-12-07
+38,38,Leonardo,Un cierre nostálgico para una gran historia.,2024-11-08
