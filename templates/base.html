@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Librería{% endblock %}</title>
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #212121;
+            color: white;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background-color: #3c3c3c;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        /* 🔳 Pixel-style border blanco animado */
+        .pixel-border {
+            padding: 8px;
+            border: 4px solid #fff;
+            image-rendering: pixelated;
+            animation: pixel-flash 1s steps(2, start) infinite;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: white;
+            color: black;
+        }
+
+        @keyframes pixel-flash {
+            0%, 100% { border-color: white; }
+            50% { border-color: red; }
+        }
+
+        /* 🟩 Botones animados con cambio de color */
+        .btn-animado {
+            animation: cambio-color 2s infinite alternate;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-animado:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes cambio-color {
+            0%   { box-shadow: 0 0 4px #ff4c4c; }
+            50%  { box-shadow: 0 0 6px #4ca1ff; }
+            100% { box-shadow: 0 0 8px #8aff4c; }
+        }
+
+        /* 🟦 Borde animado azul claro */
+        .borde-azul-animado {
+            border: 4px solid #4ca1ff;
+            animation: brillo-azul 2s infinite ease-in-out;
+        }
+
+        @keyframes brillo-azul {
+            0%, 100% { box-shadow: 0 0 6px #4ca1ff; }
+            50%      { box-shadow: 0 0 12px #66ccff; }
+        }
+
+        /* 🎮 Iconos animados */
+        .kirby {
+            width: 48px;
+            height: 48px;
+            margin-left: 12px;
+            animation: float 1.5s ease-in-out infinite;
+        }
+
+        .pokeball {
+            width: 32px;
+            height: 32px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .icono-flotante {
+            animation: flotar 2.5s ease-in-out infinite;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .brillo-rojo {
+            filter: drop-shadow(0 0 4px #ff4c4c) drop-shadow(0 0 8px #ff9999);
+        }
+
+        /* 🟥 Rojo animado */
+        .borde-rojo-animado {
+            animation: borde-rojo 1.5s infinite alternate;
+            border: 4px solid #ff4c4c;
+            box-shadow: 0 0 6px 2px #ff4c4c;
+        }
+
+        @keyframes borde-rojo {
+            from { box-shadow: 0 0 6px 2px #ff4c4c; }
+            to { box-shadow: 0 0 12px 4px #ff9999; }
+        }
+
+        .btn-rojo-animado {
+            animation: pulso-rojo 1.8s infinite;
+            box-shadow: 0 0 4px 1px #ff4c4c;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-rojo-animado:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 8px 3px #ff9999;
+        }
+
+        @keyframes pulso-rojo {
+            0% { box-shadow: 0 0 4px 1px #ff4c4c; }
+            100% { box-shadow: 0 0 8px 4px #ff9999; }
+        }
+
+        /* 🟣 Morado animado */
+        .borde-morado-animado {
+            padding: 8px;
+            border: 4px solid #fff;
+            image-rendering: pixelated;
+            animation: pixel-flash-morado 1s steps(2, start) infinite;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: white;
+            color: black;
+        }
+
+        @keyframes pixel-flash-morado {
+            0%, 100% { border-color: white; }
+            50% { border-color: #8000ff; }
+        }
+
+        .brillo-morado {
+            animation: resplandor-morado 2s ease-in-out infinite;
+        }
+
+        @keyframes resplandor-morado {
+            0%, 100% { filter: drop-shadow(0 0 0px #8000ff); }
+            50% { filter: drop-shadow(0 0 12px #8000ff); }
+        }
+
+        .btn-morado-animado {
+            animation: pulso-morado 2s infinite;
+            box-shadow: 0 0 4px 1px #8000ff;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-morado-animado:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 8px 4px #cc99ff;
+        }
+
+        @keyframes pulso-morado {
+            0% { box-shadow: 0 0 4px 1px #8000ff; }
+            100% { box-shadow: 0 0 8px 4px #cc99ff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ✅ ENCABEZADO ÚNICO -->
+    <header class="nes-container with-title is-centered">
+        <p class="title pixel-border">
+            📚 Biblioteca Interactiva
+            <img src="/static/icons/kirby.png" alt="Kirby" class="kirby">
+        </p>
+        <nav>
+            <a href="/" class="nes-btn btn-animado">🏠 Inicio</a>
+            <a href="/libros" class="nes-btn btn-animado">📘 Libros</a>
+            <a href="/autores" class="nes-btn btn-animado">👩‍💼 Autores</a>
+            <a href="/comentarios" class="nes-btn btn-animado">💬 Comentarios</a>
+            <a href="/libros/crear" class="nes-btn is-success btn-animado">➕ Nuevo Libro</a>
+            <a href="/libros/eliminados" class="nes-btn is-error btn-animado">🗑 Libros Eliminados</a>
+            <a href="/autores/eliminados" class="nes-btn btn-animado">🗑 Autores Eliminados</a>
+            <a href="/comentarios/eliminados" class="nes-btn btn-animado">🗑 Comentarios Eliminados</a>
+            <a href="/objetivo" class="nes-btn btn-animado">🎯 Objetivo</a>
+            <a href="/planeacion" class="nes-btn btn-animado">🗂️ Planeación</a>
+            <a href="/diseno" class="nes-btn btn-animado">🧩 Diseño</a>
+            <a href="/desarrollador" class="nes-btn btn-animado">👩‍💻 Desarrollador</a>
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <a href="/libros/buscar" class="nes-btn is-warning btn-animado">🔍 Buscar Libros NES</a>
+                <img src="/static/icons/pokeball.png" alt="Pokebola" class="pokeball">
+            </span>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
