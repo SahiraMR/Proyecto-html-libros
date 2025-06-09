@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<section class="nes-container is-dark with-title mt-4" style="position: relative;">
+  <h2 class="title" style="color: white;">📚 Bienvenido al Proyecto</h2>
+
+  <p style="color: white;" class="mt-3">
+    Explora las diferentes secciones del proyecto integrador de Desarrollo de Software:
+  </p>
+
+  <div class="mt-4">
+    <a href="/libros" class="nes-btn btn-animado">📘 Ver todos los libros</a>
+  </div>
+
+  <div class="mt-4 borde-azul-animado" style="padding: 10px; border-radius: 8px;">
+    <table class="nes-table is-bordered is-centered" style="background-color: #121212; color: white;">
+      <thead>
+        <tr>
+          <th>Sección</th>
+          <th>Descripción</th>
+          <th>Ir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🎯 Objetivo</td>
+          <td>Propósito general del sistema y su enfoque educativo.</td>
+          <td><a href="/objetivo" class="nes-btn is-primary btn-animado">Ver</a></td>
+        </tr>
+        <tr>
+          <td>🗂️ Planeación</td>
+          <td>Casos de uso, modelo de datos y fuente de información.</td>
+          <td><a href="/planeacion" class="nes-btn is-warning btn-animado">Ver</a></td>
+        </tr>
+        <tr>
+          <td>🧩 Diseño</td>
+          <td>Diagrama de clases, mapa de endpoints y mockups.</td>
+          <td><a href="/diseno" class="nes-btn is-success btn-animado">Ver</a></td>
+        </tr>
+        <tr>
+          <td>👩‍💻 Desarrollador</td>
+          <td>Datos de Sahira Medina y tecnologías utilizadas.</td>
+          <td><a href="/desarrollador" class="nes-btn is-error btn-animado">Ver</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ÍCONOS flotantes en las esquinas derechas -->
+  <img src="/static/icons/kirby.png" alt="Kirby" class="icono-flotante brillo-rojo"
+       style="position: absolute; top: 12px; right: 12px; width: 48px;">
+  <img src="/static/icons/pokeball.png" alt="Pokebola" class="icono-flotante brillo-rojo"
+       style="position: absolute; bottom: 12px; right: 12px; width: 48px;">
+</section>
+{% endblock %}
