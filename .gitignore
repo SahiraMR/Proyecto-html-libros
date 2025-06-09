@@ -1,0 +1,34 @@
+# 🐍 Entorno virtual
+.venv/
+env/
+
+# ⚙️ Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 💻 Configuración de editores
+.vscode/
+.idea/
+
+# 📦 Dependencias y cachés
+*.egg-info/
+.eggs/
+*.log
+
+# 🧪 Archivos de pruebas temporales
+*.sqlite3
+*.db
+
+# 🔐 Archivos sensibles
+.env
+.env.*
+
+# 📄 Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# 🚀 Deploy
+*.bak
+*.swp
