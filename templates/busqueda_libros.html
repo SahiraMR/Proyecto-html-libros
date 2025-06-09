@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Buscar Libros NES{% endblock %}
+
+{% block content %}
+<style>
+  .borde-morado-animado {
+    background-color: #111;
+    border: 4px solid #cc99ff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #cc99ff, 0 0 20px #cc99ff;
+    animation: brillo-morado 2s infinite alternate;
+  }
+
+  @keyframes brillo-morado {
+    from { box-shadow: 0 0 6px #cc99ff; }
+    to   { box-shadow: 0 0 20px #cc99ff; }
+  }
+
+  .nes-container.is-dark label,
+  .nes-container.is-dark h2,
+  .nes-container.is-dark p {
+    color: white;
+  }
+
+  .nes-select select,
+  .nes-input {
+    background-color: #222 !important;
+    color: white !important;
+    border-color: #cc99ff;
+  }
+
+  .nes-btn {
+    border: 2px solid #555;
+  }
+
+  .nes-btn.filtrar {
+    background-color: #007BFF;
+    color: white;
+  }
+
+  .nes-btn.buscar {
+    background-color: #00cc66;
+    color: white;
+  }
+
+  .btn-volver-morado {
+    background-color: #cc99ff !important;
+    color: black !important;
+    box-shadow: 0 0 8px #cc99ff, 0 0 16px #cc99ff;
+    animation: brillo-volver 1.5s infinite alternate;
+    margin-top: 2rem;
+  }
+
+  @keyframes brillo-volver {
+    from { box-shadow: 0 0 4px #cc99ff; }
+    to   { box-shadow: 0 0 14px #cc99ff; }
+  }
+
+  .icono-flotante {
+    filter: drop-shadow(0 0 6px #cc99ff);
+  }
+</style>
+
+<section class="nes-container with-title borde-morado-animado mt-4" style="position: relative;">
+  <h2 class="title" style="color: black; background-color: white; padding: 6px; border-radius: 8px;">
+    📚 Buscador Interactivo de Libros
+    <img src="/static/icons/kirby.png" alt="Kirby" class="icono-flotante" style="float: right; width: 48px;">
+  </h2>
+
+  <!-- FILTRO POR GÉNERO -->
+  <form method="get" action="/libros/filtrar" class="mb-4">
+    <div class="nes-field">
+      <label for="genero">🎭 Filtrar por género:</label>
+      <div class="nes-select">
+        <select id="genero" name="genero" required>
+          <option value="">Selecciona un género</option>
+          {% for genero in generos %}
+            <option value="{{ genero }}">{{ genero }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="nes-btn filtrar mt-2">🎯 Filtrar</button>
+  </form>
+
+  <!-- BÚSQUEDA POR ID -->
+  <form method="get" action="/libros/buscar_por_id" class="mb-4">
+    <div class="nes-field">
+      <label for="id">🔢 Buscar libro por ID:</label>
+      <input type="number" id="id" name="id" class="nes-input" placeholder="Ej: 1" required>
+    </div>
+    <button type="submit" class="nes-btn buscar mt-2">🔍 Buscar</button>
+  </form>
+
+  <!-- Botón de volver -->
+  <div class="mt-5">
+    <a href="/" class="nes-btn btn-volver-morado">🔙 Volver al inicio</a>
+  </div>
+
+  <!-- ÍCONO INFERIOR -->
+  <img src="/static/icons/pokeball.png" alt="Pokebola" class="icono-flotante" style="position: absolute; bottom: 12px; right: 12px; width: 48px;">
+</section>
+{% endblock %}
