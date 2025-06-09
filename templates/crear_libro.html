@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Crear Libro{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #1f1f1f;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+  }
+
+  .form-container {
+    background-color: #2a2a2a;
+    color: white;
+    border: 4px solid #ff66cc;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #ff66cc;
+    animation: glow 2s infinite alternate;
+    padding: 2rem;
+    position: relative;
+    margin-top: 2rem;
+  }
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 10px #ff66cc; }
+    100% { box-shadow: 0 0 30px #ff99ff; }
+  }
+
+  .kirby {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 48px;
+    animation: float 1.8s ease-in-out infinite;
+  }
+
+  .pokeball {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 36px;
+    animation: bounce 1.2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .boton-animado {
+    animation: boton-brillo 1.5s infinite alternate;
+  }
+
+  @keyframes boton-brillo {
+    0% { box-shadow: 0 0 6px #ff66cc; transform: scale(1); }
+    100% { box-shadow: 0 0 16px #ff99ff; transform: scale(1.05); }
+  }
+</style>
+
+<section class="form-container with-title">
+  <h2 class="title">➕ Crear Nuevo Libro</h2>
+
+  <img src="/static/icons/kirby.gif" class="kirby" alt="Kirby">
+  <img src="/static/icons/pokeball.png" class="pokeball" alt="Pokebola">
+
+  <form action="/libros/crear" method="post" enctype="multipart/form-data">
+    <div class="nes-field mt-3">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" name="titulo" class="nes-input" required>
+    </div>
+
+    <div class="nes-field mt-3">
+      <label for="autor_id">Autor</label>
+      <div class="nes-select">
+        <select required name="autor_id" id="autor_id">
+          <option value="" disabled selected>Selecciona un autor</option>
+          {% for autor in autores %}
+            <option value="{{ autor.id }}">{{ autor.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="nes-field mt-3">
+      <label for="anio_publicacion">Año de Publicación</label>
+      <input type="number" id="anio_publicacion" name="anio_publicacion" class="nes-input" required>
+    </div>
+
+    <div class="nes-field mt-3">
+      <label for="genero">Género</label>
+      <input type="text" id="genero" name="genero" class="nes-input" required>
+    </div>
+
+    <div class="nes-field mt-3">
+      <label for="plataforma">Plataforma</label>
+      <div class="nes-select">
+        <select name="plataforma" id="plataforma" required>
+          <option value="Wattpad">Wattpad</option>
+          <option value="Booknet">Booknet</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="nes-field mt-3">
+      <label>¿Viral en TikTok?</label>
+      <div>
+        <label for="viral_en_tiktok_true">
+          <input type="radio" class="nes-radio" name="viral_en_tiktok" id="viral_en_tiktok_true" value="true" required>
+          <span>Sí</span>
+        </label>
+        <label for="viral_en_tiktok_false">
+          <input type="radio" class="nes-radio" name="viral_en_tiktok" id="viral_en_tiktok_false" value="false" required>
+          <span>No</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="nes-field mt-3">
+      <label for="portada">Portada (opcional)</label>
+      <input type="file" id="portada" name="portada" accept="image/*">
+    </div>
+
+    <button type="submit" class="nes-btn is-primary boton-animado mt-4">📚 Crear Libro</button>
+  </form>
+</section>
+{% endblock %}
