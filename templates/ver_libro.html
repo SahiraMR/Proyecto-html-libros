@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Detalles del Libro{% endblock %}
+
+{% block content %}
+<section class="nes-container with-title is-dark mt-4">
+  <h2 class="title">📘 {{ libro.titulo }}</h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+    {% if libro.portada %}
+      <img src="/static/portadas/{{ libro.portada }}" alt="Portada" style="max-width: 180px;">
+    {% else %}
+      <p>Sin portada</p>
+    {% endif %}
+
+    <div>
+      <p><strong>👤 Autor:</strong> {{ autor.nombre if autor else "Desconocido" }}</p>
+      <p><strong>🎭 Género:</strong> {{ libro.genero }}</p>
+      <p><strong>📅 Año:</strong> {{ libro.anio_publicacion or "N/D" }}</p>
+      <p><strong>🌐 Plataforma:</strong> {{ libro.plataforma or "N/D" }}</p>
+      <p><strong>📈 Viral en TikTok:</strong> {{ libro.viral_en_tiktok }}</p>
+    </div>
+  </div>
+
+  <hr class="mt-4">
+
+  <h3>💬 Comentarios</h3>
+  <ul class="nes-list is-circle">
+    {% for comentario in comentarios %}
+      <li>💭 <strong>{{ comentario.usuario }}:</strong> {{ comentario.contenido }} <em>({{ comentario.fecha }})</em></li>
+    {% else %}
+      <li>No hay comentarios aún.</li>
+    {% endfor %}
+  </ul>
+
+  <div class="mt-3">
+    <a href="/libros" class="nes-btn is-primary">🔙 Volver</a>
+    <a href="/libros/editar/{{ libro.id }}" class="nes-btn is-warning">✏️ Editar este libro</a>
+    <a href="/comentarios/crear" class="nes-btn is-success">💬 Agregar comentario</a>
+  </div>
+</section>
+{% endblock %}
