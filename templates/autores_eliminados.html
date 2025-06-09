@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Autores Eliminados{% endblock %}
+
+{% block content %}
+<style>
+  /* Tabla oscura con bordes animados */
+  .nes-table.is-bordered th,
+  .nes-table.is-bordered td {
+    color: white !important;
+    background-color: #111 !important;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 8px #00ffff;
+    animation: neon-border 2s infinite;
+  }
+
+  .nes-table thead {
+    background-color: #00ffff;
+    color: black;
+  }
+
+  @keyframes neon-border {
+    0%   { box-shadow: 0 0 5px #00ffff; }
+    50%  { box-shadow: 0 0 15px #00ffff; }
+    100% { box-shadow: 0 0 5px #00ffff; }
+  }
+
+  /* Botón volver NES azul agua marina */
+  .btn-volver-agua {
+    background-color: #00ffff !important;
+    color: black !important;
+    box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff;
+    animation: brillo-volver 1.5s infinite alternate;
+    margin-top: 1.5rem;
+  }
+
+  @keyframes brillo-volver {
+    from { box-shadow: 0 0 4px #00ffff; }
+    to   { box-shadow: 0 0 14px #00ffff; }
+  }
+
+  /* Ícono flotante kirby */
+  .icono-volver {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    animation: flotar 2.5s ease-in-out infinite;
+    transition: transform 0.3s ease;
+  }
+
+  .icono-volver img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  }
+
+  .icono-volver:hover {
+    transform: scale(1.2);
+  }
+
+  .icono-volver:active {
+    transform: scale(1.2) rotate(360deg);
+  }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+</style>
+
+<section class="nes-container with-title is-dark mt-4">
+  <h2 class="title" style="color: white;">🗑 Autores eliminados</h2>
+
+  <table class="nes-table is-bordered is-centered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Libro destacado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for autor in autores %}
+        <tr>
+          <td>{{ autor.id }}</td>
+          <td>{{ autor.nombre }}</td>
+          <td>{{ autor.nombre_libro }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="3">No hay autores eliminados.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="mt-4">
+    <a href="/autores" class="nes-btn btn-volver-agua">🔙 Volver</a>
+  </div>
+</section>
+
+<!-- Ícono flotante decorativo -->
+<a href="/autores" class="icono-volver" title="Volver">
+  <img src="/static/icons/kirby.png" alt="Volver a autores">
+</a>
+{% endblock %}
