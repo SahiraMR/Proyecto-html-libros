@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Editar Autor{% endblock %}
+
+{% block content %}
+<style>
+  .btn-guardar-autor {
+    background-color: #00ff88 !important;
+    color: black !important;
+    box-shadow: 0 0 8px #00ff88, 0 0 16px #00ff88;
+    animation: brillo-verde 1.5s infinite alternate;
+    margin-right: 1rem;
+  }
+
+  .btn-volver-agua {
+    background-color: #00ffff !important;
+    color: black !important;
+    box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff;
+    animation: brillo-volver 1.5s infinite alternate;
+  }
+
+  @keyframes brillo-verde {
+    from { box-shadow: 0 0 4px #00ff88; }
+    to   { box-shadow: 0 0 14px #00ff88; }
+  }
+
+  @keyframes brillo-volver {
+    from { box-shadow: 0 0 4px #00ffff; }
+    to   { box-shadow: 0 0 14px #00ffff; }
+  }
+</style>
+
+<section class="nes-container with-title is-dark mt-4">
+  <h2 class="title" style="color: black; background-color: white; padding: 6px; border-radius: 8px;">
+    ✏️ Editar Autor
+  </h2>
+
+  <form method="post" class="mt-4">
+    <div class="nes-field mb-4">
+      <label for="nombre" style="color: white;">🧑 Nombre del Autor:</label>
+      <input type="text" id="nombre" name="nombre" class="nes-input" value="{{ autor.nombre }}" required>
+    </div>
+
+    <div class="nes-field mb-4">
+      <label for="genero" style="color: white;">🏷 Género:</label>
+      <input type="text" id="genero" name="genero" class="nes-input" value="{{ autor.genero }}" required>
+    </div>
+
+    <div class="nes-field mb-4">
+      <label for="nombre_libro" style="color: white;">📖 Libro destacado:</label>
+      <input type="text" id="nombre_libro" name="nombre_libro" class="nes-input" value="{{ autor.nombre_libro }}" required>
+    </div>
+
+    <div class="flex mt-4" style="gap: 1rem;">
+      <button type="submit" class="nes-btn btn-guardar-autor">💾 Guardar cambios</button>
+      <a href="/autores" class="nes-btn btn-volver-agua">🔙 Volver</a>
+    </div>
+  </form>
+</section>
+{% endblock %}
