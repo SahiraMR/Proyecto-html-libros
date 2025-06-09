@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Resultado de Búsqueda{% endblock %}
+
+{% block content %}
+<style>
+  .borde-morado-animado {
+    background-color: #111;
+    border: 4px solid #cc99ff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #cc99ff, 0 0 20px #cc99ff;
+    animation: brillo-morado 2s infinite alternate;
+  }
+
+  @keyframes brillo-morado {
+    from { box-shadow: 0 0 6px #cc99ff; }
+    to   { box-shadow: 0 0 20px #cc99ff; }
+  }
+
+  .btn-volver-morado {
+    background-color: #cc99ff !important;
+    color: black !important;
+    box-shadow: 0 0 8px #cc99ff, 0 0 16px #cc99ff;
+    animation: brillo-boton 1.5s infinite alternate;
+    margin-top: 2rem;
+  }
+
+  @keyframes brillo-boton {
+    from { box-shadow: 0 0 4px #cc99ff; }
+    to   { box-shadow: 0 0 14px #cc99ff; }
+  }
+
+  .icono-flotante {
+    position: absolute;
+    animation: flotar 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px #cc99ff);
+  }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+</style>
+
+<section class="nes-container with-title borde-morado-animado mt-4" style="position: relative;">
+  <h2 class="title" style="color: black; background-color: white; padding: 4px; border-radius: 8px;">
+    🔍 Resultado de la Búsqueda
+  </h2>
+
+  {% if libro %}
+  <div class="nes-container is-rounded with-title mt-3" style="background-color: white; color: black;">
+    <h3 class="title">📖 {{ libro.titulo }}</h3>
+    <p><strong>Autor:</strong> {{ libro.autor_nombre }}</p>
+    <p><strong>Género:</strong> {{ libro.genero }}</p>
+    <p><strong>Año:</strong> {{ libro.anio_publicacion }}</p>
+    <p><strong>Plataforma:</strong> {{ libro.plataforma }}</p>
+    <p><strong>Viral en TikTok:</strong> {{ 'Sí' if libro.viral_en_tiktok else 'No' }}</p>
+
+    {% if libro.portada %}
+      <p><strong>Portada:</strong></p>
+      <img src="/static/portadas/{{ libro.portada }}" alt="Portada" width="120" style="border-radius: 6px;">
+    {% else %}
+      <p><strong>Portada:</strong> Sin portada</p>
+    {% endif %}
+
+    <div class="mt-3">
+      <a href="/libros/editar/{{ libro.id }}" class="nes-btn is-warning">✏️ Editar</a>
+      <a href="/libros/eliminar/{{ libro.id }}" class="nes-btn is-error">🗑 Eliminar</a>
+    </div>
+  </div>
+
+  {% if libro.comentarios %}
+  <div class="nes-container is-dark with-title mt-4">
+    <p class="title">💬 Comentarios</p>
+    <ul class="nes-list is-disc" style="color: white;">
+      {% for comentario in libro.comentarios %}
+      <li>
+        <strong>{{ comentario.usuario }}:</strong> {{ comentario.contenido }} ({{ comentario.fecha }})
+        <div class="mt-1">
+          <a href="/comentarios/editar/{{ comentario.id }}" class="nes-btn is-warning is-small">Editar</a>
+          <a href="/comentarios/eliminar/{{ comentario.id }}" class="nes-btn is-error is-small">Eliminar</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% else %}
+  <p class="nes-text is-warning mt-4">❌ No se encontró ningún libro con ese ID.</p>
+  {% endif %}
+
+  <!-- Botón volver -->
+  <div class="mt-4">
+    <a href="/libros/buscar" class="nes-btn btn-volver-morado">🔙 Volver al buscador</a>
+  </div>
+
+  <!-- Íconos flotantes -->
+  <img src="/static/icons/kirby.png" alt="Kirby" class="icono-flotante" style="top: 12px; right: 12px; width: 48px;">
+  <img src="/static/icons/pokeball.png" alt="Pokebola" class="icono-flotante" style="bottom: 12px; right: 12px; width: 48px;">
+</section>
+{% endblock %}
