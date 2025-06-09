@@ -1,0 +1,9 @@
+fastapi~=0.115.1
+uvicorn
+jinja2
+sqlalchemy~=2.0.30
+pydantic~=2.11.5
+python-multipart
+psycopg2-binary
+aiofiles  # (para subir archivos estáticos, útil si trabajas con portadas)
+python-dotenv  # (opcional, si usas variables en .env)
